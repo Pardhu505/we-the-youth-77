@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Mic, TrendingUp, Users, Zap } from "lucide-react";
+import { RegistrationDialog } from "./RegistrationDialog";
 export const AboutSection = () => {
   return <section id="vision" className="py-20 px-4 bg-secondary/30">
       <div className="container mx-auto">
@@ -61,7 +62,9 @@ export const AboutSection = () => {
 
         <div className="text-center">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero">Join Us</Button>
+            <RegistrationDialog>
+              <Button variant="hero">Join Us</Button>
+            </RegistrationDialog>
             <Button variant="hero">Partner With Us</Button>
             
           </div>

@@ -8,6 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { RegistrationDialog } from "./RegistrationDialog";
 
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -65,9 +66,11 @@ export const Navigation = () => {
             <a href="#newsletter" className="text-foreground hover:text-primary transition-colors">
               Youth Pulse Report
             </a>
-            <Button variant="cta" size="sm">
-              Join Us
-            </Button>
+            <RegistrationDialog>
+              <Button variant="cta" size="sm">
+                Join Us
+              </Button>
+            </RegistrationDialog>
           </div>
 
           {/* Mobile Menu Button */}
@@ -125,9 +128,11 @@ export const Navigation = () => {
               >
                 Youth Pulse Report
               </a>
-              <Button variant="cta" size="sm" className="w-fit">
-                Join Us
-              </Button>
+              <RegistrationDialog>
+                <Button variant="cta" size="sm" className="w-fit">
+                  Join Us
+                </Button>
+              </RegistrationDialog>
             </div>
           </div>
         )}

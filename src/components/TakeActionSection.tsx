@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Users, Handshake, Heart } from "lucide-react";
+import { RegistrationDialog } from "./RegistrationDialog";
 export const TakeActionSection = () => {
   return <section className="py-20 px-4 bg-accent/5">
       <div className="container mx-auto">
@@ -24,9 +25,11 @@ export const TakeActionSection = () => {
             <p className="text-muted-foreground mb-6">
               Become part of our growing community of young changemakers and have your voice heard on national issues.
             </p>
-            <Button variant="hero" className="w-full">
-              Become a Member
-            </Button>
+            <RegistrationDialog>
+              <Button variant="hero" className="w-full">
+                Become a Member
+              </Button>
+            </RegistrationDialog>
           </Card>
 
           <Card className="p-8 text-center shadow-card hover:shadow-hover transition-all duration-300 group">
@@ -55,9 +58,11 @@ export const TakeActionSection = () => {
             <p className="text-lg text-muted-foreground mb-6">
               Join the 1,000,000 Youth Movement and help shape India's future
             </p>
-            <Button variant="cta" size="lg" className="text-lg px-12">
-              Join the 1,000,000 Youth Movement
-            </Button>
+            <RegistrationDialog>
+              <Button variant="cta" size="lg" className="text-lg px-12">
+                Join the 1,000,000 Youth Movement
+              </Button>
+            </RegistrationDialog>
           </Card>
         </div>
       </div>
