@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Users, MapPin, Megaphone, Target } from "lucide-react";
+import { InteractiveMap } from "./InteractiveMap";
 export const ImpactSection = () => {
   return <section id="impact" className="py-20 px-4 bg-primary/5">
       <div className="container mx-auto">
@@ -39,14 +40,8 @@ export const ImpactSection = () => {
           <h3 className="text-xl font-dm-serif font-bold text-center mb-6">
             Presence Across India
           </h3>
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg h-64 flex items-center justify-center">
-            <div className="text-center">
-              <MapPin className="mx-auto mb-4 text-primary" size={64} />
-              <p className="text-muted-foreground">Interactive Map Coming Soon</p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Highlighting our reach across 28 states
-              </p>
-            </div>
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg h-[500px] flex items-center justify-center">
+            <InteractiveMap />
           </div>
         </Card>
 

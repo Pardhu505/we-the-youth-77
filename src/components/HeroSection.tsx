@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BarChart3, TrendingUp, Users, MapPin } from "lucide-react";
+import { RegistrationDialog } from "./RegistrationDialog";
 
 export const HeroSection = () => {
   return (
@@ -67,9 +68,11 @@ export const HeroSection = () => {
         </div>
 
         <div className="text-center">
-          <Button variant="cta" size="lg" className="text-lg">
-            Join Us
-          </Button>
+          <RegistrationDialog>
+            <Button variant="cta" size="lg" className="text-lg">
+              Join Us
+            </Button>
+          </RegistrationDialog>
           <p className="text-muted-foreground mt-4">
             Join the movement to amplify youth voices across India
           </p>

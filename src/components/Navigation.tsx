@@ -8,6 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { RegistrationDialog } from "./RegistrationDialog";
 
 export const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +23,7 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
+            <img src="https://t4.ftcdn.net/jpg/01/13/49/77/360_F_113497733_NNWnCEY6M1R09Shx1ZJGietBR5M181xL.jpg" alt="We The Youth Logo" className="h-8 w-8 mr-2 rounded-full" />
             <h1 className="text-xl font-dm-serif font-bold text-primary">
               We The Youth
             </h1>
@@ -65,9 +67,11 @@ export const Navigation = () => {
             <a href="#newsletter" className="text-foreground hover:text-primary transition-colors">
               Youth Pulse Report
             </a>
-            <Button variant="cta" size="sm">
-              Join Us
-            </Button>
+            <RegistrationDialog>
+              <Button variant="cta" size="sm">
+                Join Us
+              </Button>
+            </RegistrationDialog>
           </div>
 
           {/* Mobile Menu Button */}
@@ -125,9 +129,11 @@ export const Navigation = () => {
               >
                 Youth Pulse Report
               </a>
-              <Button variant="cta" size="sm" className="w-fit">
-                Join Us
-              </Button>
+              <RegistrationDialog>
+                <Button variant="cta" size="sm" className="w-fit">
+                  Join Us
+                </Button>
+              </RegistrationDialog>
             </div>
           </div>
         )}
