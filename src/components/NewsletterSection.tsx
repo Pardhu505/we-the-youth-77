@@ -1,9 +1,49 @@
+import * as React from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useToast } from "@/components/ui/use-toast";
 import { Mail, FileText, Lightbulb, Calendar, Users, ArrowRight } from "lucide-react";
 
 export const NewsletterSection = () => {
+  const { toast } = useToast();
+  const [email, setEmail] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.msg || "Subscription failed");
+      }
+
+      toast({
+        title: "Success!",
+        description: "You have been subscribed to the newsletter.",
+      });
+      setEmail("");
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: error.message || "There was a problem with your request.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section id="newsletter" className="py-20 px-4">
       <div className="container mx-auto">
@@ -17,16 +57,28 @@ export const NewsletterSection = () => {
             <p className="text-xl font-playfair text-muted-foreground max-w-2xl mx-auto mb-8">
               A quarterly newsletter capturing what India's youth is thinking.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                type="email" 
-                placeholder="Enter your email" 
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+            >
+              <Input
+                type="email"
+                placeholder="Enter your email"
                 className="flex-1 h-12"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
-              <Button variant="cta" size="lg" className="h-12 px-8">
-                Subscribe Now
+              <Button
+                type="submit"
+                variant="cta"
+                size="lg"
+                className="h-12 px-8"
+                disabled={isLoading}
+              >
+                {isLoading ? "Subscribing..." : "Subscribe Now"}
               </Button>
-            </div>
+            </form>
           </div>
         </div>
 
@@ -112,16 +164,28 @@ export const NewsletterSection = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Be the first to know what's shaping India's youth narrative. Subscribe now and never miss an issue.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-            <Input 
-              type="email" 
-              placeholder="Your email address" 
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+          >
+            <Input
+              type="email"
+              placeholder="Your email address"
               className="flex-1 h-12"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            <Button variant="cta" size="lg" className="h-12 px-12">
-              Subscribe Now
+            <Button
+              type="submit"
+              variant="cta"
+              size="lg"
+              className="h-12 px-12"
+              disabled={isLoading}
+            >
+              {isLoading ? "Subscribing..." : "Subscribe Now"}
             </Button>
-          </div>
+          </form>
         </Card>
       </div>
     </section>
