@@ -29,6 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -101,8 +102,38 @@ export function RegistrationDialog({
   const isPoliticallyActive = form.watch("isPoliticallyActive");
   const hasContestedElections = form.watch("hasContestedElections");
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    try {
+      const response = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      toast({
+        title: "Success!",
+        description: "You have been registered successfully.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -888,7 +919,9 @@ export function RegistrationDialog({
               )}
             />
             <div className="col-span-2 flex justify-end">
-              <Button type="submit">Submit</Button>
+              <Button type="submit" disabled={isLoading}>
+                {isLoading ? "Submitting..." : "Submit"}
+              </Button>
             </div>
           </form>
         </Form>
