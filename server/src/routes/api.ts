@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import Registration from '../models/Registration';
 import Subscription from '../models/Subscription';
+import PriorityVote from '../models/PriorityVote';
 
 const router = Router();
 
@@ -36,6 +37,44 @@ router.post('/subscribe', async (req, res) => {
     subscription = new Subscription({ email });
     await subscription.save();
     res.status(201).json({ msg: 'Subscription successful' });
+  } catch (err: any) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   GET api/priorities/votes
+// @desc    Get all priority votes
+// @access  Public
+router.get('/priorities/votes', async (req, res) => {
+  try {
+    const votes = await PriorityVote.find();
+    res.json(votes);
+  } catch (err: any) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   POST api/priorities/vote
+// @desc    Vote for a priority
+// @access  Public
+router.post('/priorities/vote', async (req, res) => {
+  const { priority } = req.body;
+  if (!priority) {
+    return res.status(400).json({ msg: 'Priority is required' });
+  }
+
+  try {
+    let priorityVote = await PriorityVote.findOne({ priority });
+    if (priorityVote) {
+      priorityVote.votes += 1;
+      await priorityVote.save();
+    } else {
+      priorityVote = new PriorityVote({ priority, votes: 1 });
+      await priorityVote.save();
+    }
+    res.status(201).json(priorityVote);
   } catch (err: any) {
     console.error(err.message);
     res.status(500).send('Server Error');
