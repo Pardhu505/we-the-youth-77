@@ -23,9 +23,9 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/logo.png" alt="We The Youth Logo" className="h-8 w-8 mr-2 rounded-full" />
+            <img src="/logo.png" alt="We The Youth Logo" className="h-12 w-12 mr-2 rounded-full" />
             <h1 className="text-xl font-dm-serif font-bold text-primary">
-              We The Youth
+              Desh Ke Liye....!
             </h1>
           </div>
 
