@@ -11,8 +11,25 @@ import {
   Vote,
   UserPlus
 } from 'lucide-react';
+import { useState } from 'react';
 
 export const NextGenLeadersSection = () => {
+  const [votes, setVotes] = useState<{[key: string]: number}>({"Urban Futures": 1});
+  const [selectedPriority, setSelectedPriority] = useState<string | null>("Urban Futures");
+
+  const priorities = [
+    { name: 'Urban Futures', icon: Building2, color: 'brand-orange' },
+    { name: "Women's Safety", icon: Shield, color: 'brand-red-orange' },
+    { name: 'Love & Choice', icon: Heart, color: 'brand-saffron' },
+    { name: 'Healthy Living', icon: Heart, color: 'brand-green' },
+    { name: 'Education & Skills', icon: GraduationCap, color: 'brand-yellow' },
+    { name: 'Mental Health', icon: Brain, color: 'brand-orange' },
+    { name: 'Climate Action', icon: Leaf, color: 'brand-green' },
+    { name: 'Cost of Living', icon: DollarSign, color: 'brand-red-orange' },
+    { name: 'Body & Identity', icon: User, color: 'brand-saffron' },
+    { name: 'Migration & Opportunity', icon: Plane, color: 'brand-yellow' },
+  ];
+
   return (
     <section id="next-gen" className="py-20 px-4 bg-gradient-to-br from-background via-brand-orange/5 to-brand-yellow/5">
       <div className="container mx-auto">
@@ -23,102 +40,29 @@ export const NextGenLeadersSection = () => {
         <div className="mb-20">
           <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Top Youth Priorities</h3>
-            <p className="text-lg text-muted-foreground mb-8">What issues matter most to India's youth? Hover to see the stats.</p>
+            <p className="text-lg text-muted-foreground mb-8">What issues matter most to India's youth? Click to select and vote.</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-orange/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Building2 className="lucide lucide-building2 mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-orange" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Urban Futures</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">78% of youth live in urban areas by 2030</p>
+            {priorities.map((priority) => (
+              <div
+                key={priority.name}
+                className={`rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-${priority.color}/10 border-2 ${selectedPriority === priority.name ? 'border-primary' : 'border-transparent'}`}
+                onClick={() => setSelectedPriority(priority.name)}
+              >
+                <div className="text-center">
+                  <priority.icon className={`mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-${priority.color}`} width={40} height={40} />
+                  <h4 className="font-bold text-sm mb-2 text-foreground">{priority.name}</h4>
+                  <div>
+                    <p className="text-xs text-muted-foreground">{votes[priority.name] || 0} {votes[priority.name] === 1 ? 'vote' : 'votes'}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-red-orange/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Shield className="lucide lucide-shield mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-red-orange" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Women's Safety</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">1 in 3 women face harassment daily</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-saffron/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Heart className="lucide lucide-heart mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-saffron" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Love &amp; Choice</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">67% support marriage equality</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-green/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Heart className="lucide lucide-heart mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-green" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Healthy Living</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">Rising mental health awareness among youth</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-yellow/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <GraduationCap className="lucide lucide-graduation-cap mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-yellow" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Education &amp; Skills</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">Skills gap affects 60% of graduates</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-orange/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Brain className="lucide lucide-brain mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-orange" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Mental Health</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">1 in 4 youth experience anxiety</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-green/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Leaf className="lucide lucide-leaf mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-green" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Climate Action</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">90% of youth demand climate action</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-red-orange/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <DollarSign className="lucide lucide-dollar-sign mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-red-orange" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Cost of Living</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">Housing costs consume 40% of income</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-saffron/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <User className="lucide lucide-user mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-saffron" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Body &amp; Identity</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">85% support body positivity movements</p>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl bg-brand-yellow/10 border-2 border-transparent hover:border-current group">
-              <div className="text-center">
-                <Plane className="lucide lucide-plane mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-brand-yellow" width={40} height={40} />
-                <h4 className="font-bold text-sm mb-2 text-foreground">Migration &amp; Opportunity</h4>
-                <div className="transition-all duration-300 opacity-0 max-h-0 overflow-hidden">
-                  <p className="text-xs text-muted-foreground">45% of youth consider migration for opportunities</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="text-center">
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold py-3 transition-all duration-300 hover:shadow-hover h-11 rounded-md px-8 group">
+            <button
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold py-3 transition-all duration-300 hover:shadow-hover h-11 rounded-md px-8 group"
+            >
               <Vote className="lucide lucide-vote mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
               Vote for Your Top Priorities
             </button>
