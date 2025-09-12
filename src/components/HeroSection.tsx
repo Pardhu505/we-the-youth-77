@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BarChart3, TrendingUp, Users, MapPin } from "lucide-react";
 import { RegistrationDialog } from "./RegistrationDialog";
+import { VideoSection } from "./VideoSection";
 
 export const HeroSection = () => {
   return (
@@ -17,6 +18,8 @@ export const HeroSection = () => {
             From townhall conversations to issue briefs, from digital polls to national campaigns - we create spaces where India's youth can be heard, and where their perspectives help shape tomorrow's decisions.
           </p>
         </div>
+
+        <VideoSection />
 
         {/* Interactive Dashboard Mock */}
         <div className="mb-12">
