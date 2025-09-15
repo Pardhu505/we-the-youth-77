@@ -6,15 +6,22 @@ import { VideoSection } from "./VideoSection";
 
 export const HeroSection = () => {
   return (
-    <section id="home" className="py-20 px-4">
-      <div className="container mx-auto">
+    <section
+      id="home"
+      className="relative py-20 px-4 bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/hero-background.jpg')",
+      }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-dm-serif font-bold text-foreground mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-dm-serif font-bold text-white mb-6 leading-tight">
             Half of India is under 30.
             <br />
             <span className="text-primary">Its voice should be too.</span>
           </h1>
-          <p className="text-xl md:text-2xl font-playfair text-muted-foreground mb-8 max-w-4xl mx-auto">
+          <p className="text-xl md:text-2xl font-playfair text-gray-200 mb-8 max-w-4xl mx-auto">
             From townhall conversations to issue briefs, from digital polls to national campaigns - we create spaces where India's youth can be heard, and where their perspectives help shape tomorrow's decisions.
           </p>
         </div>
