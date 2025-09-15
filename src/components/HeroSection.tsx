@@ -30,7 +30,7 @@ export const HeroSection = () => {
 
         {/* Interactive Dashboard Mock */}
         <div className="mb-12">
-          <h2 className="text-2xl md:text-3xl font-dm-serif font-bold text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-dm-serif font-bold text-center text-white mb-8">
             The Gap: Youth Population vs Youth Representation
           </h2>
           
