@@ -6,14 +6,14 @@ def run(playwright):
     page = context.new_page()
 
     # Navigate to the home page
-    page.goto("http://127.0.0.1:8085/")
+    page.goto("http://127.0.0.1:8086/")
 
     # Wait for the iframe to be visible
     iframe = page.locator("iframe#iframe-preview")
     expect(iframe).to_be_visible()
 
     # Wait for the frame image to be visible
-    frame_image = page.locator('img[src="/frame-laptop.png"]')
+    frame_image = page.get_by_test_id("video-frame-image")
     expect(frame_image).to_be_visible()
 
     # Take a screenshot
