@@ -6,17 +6,14 @@ def run(playwright):
     page = context.new_page()
 
     # Navigate to the home page
-    page.goto("http://127.0.0.1:8082/")
+    page.goto("http://127.0.0.1:8084/")
 
-    # Wait for the hero section to be visible
-    hero_section = page.locator("#home")
-    expect(hero_section).to_be_visible()
-
-    # Print the page content
-    print(page.content())
+    # Wait for the iframe to be visible
+    iframe = page.locator("iframe#iframe-preview")
+    expect(iframe).to_be_visible()
 
     # Take a screenshot
-    page.screenshot(path="jules-scratch/verification/verification-fullpage.png", full_page=True)
+    page.screenshot(path="jules-scratch/verification/verification.png")
 
     browser.close()
 
