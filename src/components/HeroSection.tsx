@@ -8,7 +8,7 @@ export const HeroSection = () => {
   return (
     <section id="home" className="py-20 px-4">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-dm-serif font-bold text-foreground mb-6 leading-tight">
             Half of India is under 30.
             <br />
