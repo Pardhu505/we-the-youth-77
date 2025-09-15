@@ -1,21 +1,21 @@
-from playwright.sync_api import Page, expect, sync_playwright
+from playwright.sync_api import Page, expect
 
-def run(playwright):
-    browser = playwright.chromium.launch(headless=True)
-    context = browser.new_context()
-    page = context.new_page()
+def test_video_section(page: Page):
+    """
+    This test verifies that the video section is displayed correctly.
+    """
+    # 1. Arrange: Go to the homepage.
+    page.goto("http://127.0.0.1:8080")
 
-    # Navigate to the home page
-    page.goto("http://127.0.0.1:8084/")
+    # 2. Act: Find the Hero Section
+    hero_section = page.locator("section").first
+    hero_section.scroll_into_view_if_needed()
 
-    # Wait for the iframe to be visible
-    iframe = page.locator("iframe#iframe-preview")
-    expect(iframe).to_be_visible()
+    # 3. Assert: Confirm the video section is visible.
+    video_section = hero_section.locator("div.relative.mx-auto.mb-2.max-w-4xl")
+    expect(video_section).to_be_visible()
+    page.wait_for_load_state('networkidle')
 
-    # Take a screenshot
-    page.screenshot(path="jules-scratch/verification/verification.png")
 
-    browser.close()
-
-with sync_playwright() as playwright:
-    run(playwright)
+    # 4. Screenshot: Capture the final result for visual verification.
+    video_section.screenshot(path="jules-scratch/verification/verification.png")
