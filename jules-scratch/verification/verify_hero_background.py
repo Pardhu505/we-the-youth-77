@@ -6,17 +6,17 @@ def run(playwright):
     page = context.new_page()
 
     # Navigate to the home page
-    page.goto("http://127.0.0.1:8082/")
+    page.goto("http://127.0.0.1:8085/")
 
     # Wait for the hero section to be visible
     hero_section = page.locator("#home")
     expect(hero_section).to_be_visible()
 
-    # Print the page content
-    print(page.content())
+    # Wait for the background image to be loaded
+    expect(hero_section).to_have_css("background-image", 'url("http://127.0.0.1:8085/hero-background.jpg")')
 
     # Take a screenshot
-    page.screenshot(path="jules-scratch/verification/verification-fullpage.png", full_page=True)
+    page.screenshot(path="jules-scratch/verification/verification.png")
 
     browser.close()
 
