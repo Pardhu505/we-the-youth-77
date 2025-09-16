@@ -81,16 +81,18 @@ export const ImpactSection = () => {
           <h3 className="text-xl font-dm-serif font-bold text-center mb-6">
             Presence Across India
           </h3>
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center w-full max-w-[600px] mx-auto">
-            <IndiaMap
-              stateData={stateData}
-              mapStyle={{
-                backgroundColor: "transparent",
-                hoverColor: "#a3e635", // a lime green color
-                stroke: "#000000",
-                strokeWidth: 1,
-              }}
-            />
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-8 flex items-center justify-center">
+            <div className="w-full max-w-[600px]">
+              <IndiaMap
+                stateData={stateData}
+                mapStyle={{
+                  backgroundColor: "transparent",
+                  hoverColor: "#a3e635", // a lime green color
+                  stroke: "#000000",
+                  strokeWidth: 1,
+                }}
+              />
+            </div>
           </div>
         </Card>
 
