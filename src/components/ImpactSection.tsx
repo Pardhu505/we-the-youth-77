@@ -81,7 +81,7 @@ export const ImpactSection = () => {
           <h3 className="text-xl font-dm-serif font-bold text-center mb-6">
             Presence Across India
           </h3>
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg h-[500px] flex items-center justify-center w-full max-w-[600px] mx-auto">
+          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center w-full">
             <IndiaMap
               stateData={stateData}
               mapStyle={{
