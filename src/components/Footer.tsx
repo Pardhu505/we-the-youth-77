@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Youtube, Facebook, Mail, Phone } from "lucide-react";
+import { Instagram, Twitter, Youtube, Mail, Phone } from "lucide-react";
 export const Footer = () => {
   return <footer className="bg-youth-black text-white py-16 px-4">
       <div className="container mx-auto">
@@ -10,17 +10,14 @@ export const Footer = () => {
               Empowering India's youth to shape the nation's decisions through voice, influence, and representation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors">
+              <a href="https://www.instagram.com/wetheyouth2025?igsh=aG85ODB6Z3EwZHV0" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors">
                 <Instagram size={24} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors">
+              <a href="https://x.com/wethe_youth?t=eVVG8xr3KLeQlmpX9vlDvw&s=09" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors">
                 <Twitter size={24} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors">
+              <a href="https://youtube.com/@wetheyouth2025?si=RstpulhTSXLGJlV2" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-accent transition-colors">
                 <Youtube size={24} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-accent transition-colors">
-                <Facebook size={24} />
               </a>
             </div>
           </div>
