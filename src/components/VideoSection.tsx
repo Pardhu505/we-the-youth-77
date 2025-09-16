@@ -7,14 +7,9 @@ export const VideoSection = () => {
         data-testid="video-frame-image"
         className="w-full h-auto"
       />
-      <iframe
-        className="absolute w-[75.5%] h-[77%] top-[7.5%] left-[12.3%]"
-        src="https://www.youtube.com/embed/YUlzxZVRHy8"
-        id="iframe-preview"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+     <div className="absolute w-[75.5%] h-[77%] top-[7.5%] left-[12.3%] bg-white flex items-center justify-center">
+        <p className="text-black text-2xl font-bold">Video coming soon</p>
+      </div>
     </div>
   );
 };
