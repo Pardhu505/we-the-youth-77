@@ -11,70 +11,32 @@ import {
   Vote,
   UserPlus
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
-
-interface Leader {
-  _id: string;
-  name: string;
-  description: string;
-  imageUrl: string;
-  votes: number;
-}
+import { useState } from 'react';
 
 export const NextGenLeadersSection = () => {
-  const [votes, setVotes] = useState<{[key: string]: number}>({"Urban Futures": 1});
-  const [selectedPriority, setSelectedPriority] = useState<string | null>("Urban Futures");
-  const [leaders, setLeaders] = useState<Leader[]>([]);
-  const [selectedLeader, setSelectedLeader] = useState<Leader | null>(null);
-  const [totalVotes, setTotalVotes] = useState(0);
-
-  useEffect(() => {
-    fetch('/api/leaders')
-      .then(res => res.json())
-      .then(data => {
-        setLeaders(data);
-        setTotalVotes(data.reduce((acc: number, leader: Leader) => acc + leader.votes, 0));
-      });
-  }, []);
-
-  const handlePriorityVote = () => {
-    if (!selectedPriority) {
-      alert("Please select a priority to vote for.");
-      return;
-    }
-    alert("Voting is temporarily disabled. Please try again later.");
-  };
-
-  const handleLeaderVote = () => {
-    if (!selectedLeader) {
-      alert("Please select a leader to vote for.");
-      return;
-    }
-    fetch(`/api/leaders/${selectedLeader._id}/vote`, {
-      method: 'POST',
-    })
-      .then(res => res.json())
-      .then(updatedLeader => {
-        const newLeaders = leaders.map(leader =>
-          leader._id === updatedLeader._id ? updatedLeader : leader
-        );
-        setLeaders(newLeaders);
-        setTotalVotes(newLeaders.reduce((acc, leader) => acc + leader.votes, 0));
-        setSelectedLeader(null);
-      });
-  };
+  const [selectedPriority, setSelectedPriority] = useState<string | null>(null);
+  const [selectedLeader, setSelectedLeader] = useState<string | null>(null);
 
   const priorities = [
-    { name: 'Urban Futures', icon: Building2, color: 'brand-orange' },
-    { name: "Women's Safety", icon: Shield, color: 'brand-red-orange' },
-    { name: 'Love & Choice', icon: Heart, color: 'brand-saffron' },
-    { name: 'Healthy Living', icon: Heart, color: 'brand-green' },
-    { name: 'Education & Skills', icon: GraduationCap, color: 'brand-yellow' },
-    { name: 'Mental Health', icon: Brain, color: 'brand-orange' },
-    { name: 'Climate Action', icon: Leaf, color: 'brand-green' },
-    { name: 'Cost of Living', icon: DollarSign, color: 'brand-red-orange' },
-    { name: 'Body & Identity', icon: User, color: 'brand-saffron' },
-    { name: 'Migration & Opportunity', icon: Plane, color: 'brand-yellow' },
+    { name: 'Urban Futures', icon: Building2, color: 'brand-orange', votes: 150, totalVotes: 1000 },
+    { name: "Women's Safety", icon: Shield, color: 'brand-red-orange', votes: 120, totalVotes: 1000 },
+    { name: 'Love & Choice', icon: Heart, color: 'brand-saffron', votes: 100, totalVotes: 1000 },
+    { name: 'Healthy Living', icon: Heart, color: 'brand-green', votes: 90, totalVotes: 1000 },
+    { name: 'Education & Skills', icon: GraduationCap, color: 'brand-yellow', votes: 80, totalVotes: 1000 },
+    { name: 'Mental Health', icon: Brain, color: 'brand-orange', votes: 70, totalVotes: 1000 },
+    { name: 'Climate Action', icon: Leaf, color: 'brand-green', votes: 60, totalVotes: 1000 },
+    { name: 'Cost of Living', icon: DollarSign, color: 'brand-red-orange', votes: 50, totalVotes: 1000 },
+    { name: 'Body & Identity', icon: User, color: 'brand-saffron', votes: 40, totalVotes: 1000 },
+    { name: 'Migration & Opportunity', icon: Plane, color: 'brand-yellow', votes: 30, totalVotes: 1000 },
+  ];
+
+  const leaders = [
+    { _id: '1', name: 'Raghav Chadha', description: 'Young MP (AAP), articulate face of youth in politics', imageUrl: '/raghav.jpeg', votes: 85, totalVotes: 100 },
+    { _id: '2', name: 'Sachin Pilot', description: 'Senior Congress leader', imageUrl: '/sachin.jpeg', votes: 72, totalVotes: 100 },
+    { _id: '3', name: 'Tejasvi Surya', description: 'BJP MP, President of Bharatiya Janata Yuva Morcha', imageUrl: '/tejasvi.jpeg', votes: 65, totalVotes: 100 },
+    { _id: '4', name: 'Aaditya Thackeray', description: 'Shiv Sena (UBT) leader, ex-minister in Maharashtra', imageUrl: '/aaditya.jpeg', votes: 60, totalVotes: 100 },
+    { _id: '5', name: 'Kanhaiya Kumar', description: 'Former JNUSU President, now Congress leader; vocal on youth & student issues.', imageUrl: '/kanhaiya.jpeg', votes: 55, totalVotes: 100 },
+    { _id: '6', name: 'Hardik Patel', description: 'Patidar agitation leader, now active in politics; known for youth mobilization', imageUrl: '/hardik.jpeg', votes: 50, totalVotes: 100 },
   ];
 
   return (
@@ -99,8 +61,11 @@ export const NextGenLeadersSection = () => {
                 <div className="text-center">
                   <priority.icon className={`mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 text-${priority.color}`} width={40} height={40} />
                   <h4 className="font-bold text-sm mb-2 text-foreground">{priority.name}</h4>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{votes[priority.name] || 0} {votes[priority.name] === 1 ? 'vote' : 'votes'}</p>
+                  <div className="space-y-2">
+                    <p className="text-xs text-muted-foreground">{priority.votes} {priority.votes === 1 ? 'vote' : 'votes'}</p>
+                    <div aria-valuemax={100} aria-valuemin={0} role="progressbar" className="relative w-full overflow-hidden rounded-full bg-secondary h-2">
+                      <div className="h-full w-full flex-1 bg-primary transition-all" style={{transform: `translateX(-${100 - (priority.totalVotes > 0 ? Math.round((priority.votes / priority.totalVotes) * 100) : 0)}%)`}}></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -108,7 +73,7 @@ export const NextGenLeadersSection = () => {
           </div>
           <div className="text-center">
             <button
-              onClick={handlePriorityVote}
+              disabled
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold py-3 transition-all duration-300 hover:shadow-hover h-11 rounded-md px-8 group"
             >
               <Vote className="lucide lucide-vote mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
@@ -125,8 +90,8 @@ export const NextGenLeadersSection = () => {
             {leaders.map((leader) => (
               <div
                 key={leader._id}
-                className={`rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group ${selectedLeader?._id === leader._id ? 'border-primary' : 'border-transparent'}`}
-                onClick={() => setSelectedLeader(leader)}
+                className={`rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group ${selectedLeader === leader._id ? 'border-primary' : 'border-transparent'}`}
+                onClick={() => setSelectedLeader(leader._id)}
               >
                 <div className="text-center">
                   <div className="relative mb-4">
@@ -138,10 +103,10 @@ export const NextGenLeadersSection = () => {
                   <div className="space-y-2">
                     <div className="flex justify-between items-center text-sm">
                       <span className="text-muted-foreground">Support</span>
-                      <span className="font-bold text-brand-orange">{totalVotes > 0 ? Math.round((leader.votes / totalVotes) * 100) : 0}%</span>
+                      <span className="font-bold text-brand-orange">{leader.totalVotes > 0 ? Math.round((leader.votes / leader.totalVotes) * 100) : 0}%</span>
                     </div>
-                    <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                      <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: `translateX(-${100 - (totalVotes > 0 ? Math.round((leader.votes / totalVotes) * 100) : 0)}%)`}}></div>
+                    <div aria-valuemax={100} aria-valuemin={0} role="progressbar" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
+                      <div className="h-full w-full flex-1 bg-primary transition-all" style={{transform: `translateX(-${100 - (leader.totalVotes > 0 ? Math.round((leader.votes / leader.totalVotes) * 100) : 0)}%)`}}></div>
                     </div>
                   </div>
                 </div>
@@ -150,14 +115,13 @@ export const NextGenLeadersSection = () => {
           </div>
           <div className="text-center space-x-4">
             <button
-              onClick={handleLeaderVote}
-              disabled={!selectedLeader}
+              disabled
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold py-3 transition-all duration-300 hover:shadow-hover h-11 rounded-md px-8 group"
             >
               <Vote className="lucide lucide-vote mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
               Vote for Leaders
             </button>
-            <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8 group">
+            <button disabled className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8 group">
               <UserPlus className="lucide lucide-user-plus mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
               Nominate a Leader
             </button>
