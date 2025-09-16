@@ -7,8 +7,8 @@ export const VideoSection = () => {
         data-testid="video-frame-image"
         className="w-full h-auto"
       />
-     <div className="absolute w-[75%] h-[72%] top-[2.5%] left-[14.3%] bg-white flex items-center justify-center">
-        <p className="text-black text-2xl font-bold">Video coming soon</p>
+     <div className="absolute w-[75%] h-[72%] top-[2.5%] left-[12.3%] bg-black flex items-center justify-center">
+        <p className="text-white text-2xl font-bold">Video coming soon</p>
       </div>
     </div>
   );
