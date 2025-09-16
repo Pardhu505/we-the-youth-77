@@ -38,6 +38,69 @@ export const NextGenLeadersSection = () => {
     alert("Voting is temporarily disabled. Please try again later.");
   };
 
+  const leaders = [
+    {
+      name: 'Raghav Chadha',
+      description: 'Young MP (AAP), articulate face of youth in politics',
+      imageUrl: 'https://epic.uchicago.edu/wp-content/uploads/sites/5/2025/01/1638647506_raghav-chadha.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Sachin Pilot',
+      description: 'Senior Congress leader',
+      imageUrl: 'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2018/12/pilot1-1545029631.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Tejasvi Surya',
+      description: 'BJP MP, President of Bharatiya Janata Yuva Morcha',
+      imageUrl: 'https://pbs.twimg.com/profile_images/1826819616355856384/0UyEk-zl_400x400.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Aaditya Thackeray',
+      description: 'Shiv Sena (UBT) leader, ex-minister in Maharashtra',
+      imageUrl: 'https://images.mid-day.com/images/images/2025/jan/aaditya-thackeray-file_d_d.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Kanhaiya Kumar',
+      description: 'Former JNUSU President, now Congress leader; vocal on youth & student issues.',
+      imageUrl: 'https://static.toiimg.com/thumb/msid-122106578,imgsize-1055161,width-400,resizemode-4/122106578.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Hardik Patel',
+      description: 'Patidar agitation leader, now active in politics; known for youth mobilization',
+      imageUrl: 'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/04/hardikpatel-1650627109.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Chinmayi Sripada',
+      description: 'Singer & activist; #MeToo voice in India.',
+      imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Chinmayi_Sripada_at_film_fare_festival_for_winning_96s_best_singer_of_the_year_2018_(cropped).jpg/250px-Chinmayi_Sripada_at_film_fare_festival_for_winning_96s_best_singer_of_the_year_2018_(cropped).jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Trisha Shetty',
+      description: 'Gender equality activist, founder of SheSays; Forbes 30 under 30.',
+      imageUrl: 'https://femina.wwmindia.com/content/2021/aug/gendertrishashettybcclinsta-21629219706.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Ridhima Pandey',
+      description: 'Climate activist, dubbed “India’s Greta Thunberg”',
+      imageUrl: 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201912/IMG20190920124909_-_Copy.jpeg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+    {
+      name: 'Sonu Sood',
+      description: 'Actor-turned-humanitarian, became a youth icon for COVID relief work.',
+      imageUrl: 'https://assets.entrepreneur.com/content/3x2/2000/1656656216-Myproject42.jpg',
+      support: Math.floor(Math.random() * (98 - 70 + 1) + 70),
+    },
+  ];
+
   return (
     <section id="next-gen" className="py-20 px-4 bg-gradient-to-br from-background via-brand-orange/5 to-brand-yellow/5">
       <div className="container mx-auto">
@@ -83,120 +146,27 @@ export const NextGenLeadersSection = () => {
             <p className="text-lg text-muted-foreground mb-8">Young changemakers shaping India's future. Vote for leaders who inspire you.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-              <div className="text-center">
-                <div className="relative mb-4">
-                  <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Arya Rajendran" className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
-                  <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-foreground">Arya Rajendran</h4>
-                <p className="text-sm text-muted-foreground mb-4">Youngest Mayor in India</p>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Support</span>
-                    <span className="font-bold text-brand-orange">92%</span>
+            {leaders.map((leader) => (
+              <div key={leader.name} className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
+                <div className="text-center">
+                  <div className="relative mb-4">
+                    <img src={leader.imageUrl} alt={leader.name} className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
+                    <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
                   </div>
-                  <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                    <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: 'translateX(-8%)'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-              <div className="text-center">
-                <div className="relative mb-4">
-                  <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Greta Thunberg" className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
-                  <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-foreground">Greta Thunberg</h4>
-                <p className="text-sm text-muted-foreground mb-4">Climate Activist</p>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Support</span>
-                    <span className="font-bold text-brand-orange">88%</span>
-                  </div>
-                  <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                    <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: 'translateX(-12%)'}}></div>
+                  <h4 className="font-bold text-lg mb-2 text-foreground">{leader.name}</h4>
+                  <p className="text-sm text-muted-foreground mb-4">{leader.description}</p>
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">Support</span>
+                      <span className="font-bold text-brand-orange">{leader.support}%</span>
+                    </div>
+                    <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
+                      <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: `translateX(-${100 - leader.support}%)`}}></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-              <div className="text-center">
-                <div className="relative mb-4">
-                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face" alt="Malala Yousafzai" className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
-                  <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-foreground">Malala Yousafzai</h4>
-                <p className="text-sm text-muted-foreground mb-4">Education Advocate</p>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Support</span>
-                    <span className="font-bold text-brand-orange">95%</span>
-                  </div>
-                  <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                    <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: 'translateX(-5%)'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-              <div className="text-center">
-                <div className="relative mb-4">
-                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Ritesh Agarwal" className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
-                  <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-foreground">Ritesh Agarwal</h4>
-                <p className="text-sm text-muted-foreground mb-4">Young Entrepreneur</p>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Support</span>
-                    <span className="font-bold text-brand-orange">76%</span>
-                  </div>
-                  <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                    <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: 'translateX(-24%)'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-              <div className="text-center">
-                <div className="relative mb-4">
-                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face" alt="Disha Ravi" className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
-                  <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-foreground">Disha Ravi</h4>
-                <p className="text-sm text-muted-foreground mb-4">Environmental Activist</p>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Support</span>
-                    <span className="font-bold text-brand-orange">84%</span>
-                  </div>
-                  <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                    <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: 'translateX(-16%)'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group">
-              <div className="text-center">
-                <div className="relative mb-4">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Nikhil Taneja" className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-brand-orange/20 group-hover:border-brand-orange transition-colors duration-300" />
-                  <div className="absolute inset-0 rounded-full bg-brand-orange/20 transition-opacity duration-300 opacity-0"></div>
-                </div>
-                <h4 className="font-bold text-lg mb-2 text-foreground">Nikhil Taneja</h4>
-                <p className="text-sm text-muted-foreground mb-4">Content Creator &amp; Advocate</p>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="text-muted-foreground">Support</span>
-                    <span className="font-bold text-brand-orange">71%</span>
-                  </div>
-                  <div aria-valuemax={100} aria-valuemin={0} role="progressbar" data-state="indeterminate" data-max="100" className="relative w-full overflow-hidden rounded-full bg-secondary h-3">
-                    <div data-state="indeterminate" data-max="100" className="h-full w-full flex-1 bg-primary transition-all" style={{transform: 'translateX(-29%)'}}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="text-center space-x-4">
             <button className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-accent text-accent-foreground hover:bg-accent/90 font-semibold py-3 transition-all duration-300 hover:shadow-hover h-11 rounded-md px-8 group">
