@@ -2,6 +2,7 @@ import { Router } from 'express';
 import Registration from '../models/Registration';
 import Subscription from '../models/Subscription';
 import PriorityVote from '../models/PriorityVote';
+import Leader from '../models/Leader';
 
 const router = Router();
 
@@ -75,6 +76,37 @@ router.post('/priorities/vote', async (req, res) => {
       await priorityVote.save();
     }
     res.status(201).json(priorityVote);
+  } catch (err: any) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   GET api/leaders
+// @desc    Get all leaders
+// @access  Public
+router.get('/leaders', async (req, res) => {
+  try {
+    const leaders = await Leader.find();
+    res.json(leaders);
+  } catch (err: any) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   POST api/leaders/:id/vote
+// @desc    Vote for a leader
+// @access  Public
+router.post('/leaders/:id/vote', async (req, res) => {
+  try {
+    const leader = await Leader.findById(req.params.id);
+    if (!leader) {
+      return res.status(404).json({ msg: 'Leader not found' });
+    }
+    leader.votes += 1;
+    await leader.save();
+    res.json(leader);
   } catch (err: any) {
     console.error(err.message);
     res.status(500).send('Server Error');
