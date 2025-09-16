@@ -31,12 +31,16 @@ export const NextGenLeadersSection = () => {
   ];
 
   const leaders = [
-    { _id: '1', name: 'Raghav Chadha', description: 'Young MP (AAP), articulate face of youth in politics', imageUrl: '/raghav.jpeg', votes: 85, totalVotes: 100 },
-    { _id: '2', name: 'Sachin Pilot', description: 'Senior Congress leader', imageUrl: '/sachin.jpeg', votes: 72, totalVotes: 100 },
-    { _id: '3', name: 'Tejasvi Surya', description: 'BJP MP, President of Bharatiya Janata Yuva Morcha', imageUrl: '/tejasvi.jpeg', votes: 65, totalVotes: 100 },
-    { _id: '4', name: 'Aaditya Thackeray', description: 'Shiv Sena (UBT) leader, ex-minister in Maharashtra', imageUrl: '/aaditya.jpeg', votes: 60, totalVotes: 100 },
-    { _id: '5', name: 'Kanhaiya Kumar', description: 'Former JNUSU President, now Congress leader; vocal on youth & student issues.', imageUrl: '/kanhaiya.jpeg', votes: 55, totalVotes: 100 },
-    { _id: '6', name: 'Hardik Patel', description: 'Patidar agitation leader, now active in politics; known for youth mobilization', imageUrl: '/hardik.jpeg', votes: 50, totalVotes: 100 },
+    { _id: '1', name: 'Raghav Chadha', description: 'Young MP (AAP), articulate face of youth in politics', imageUrl: 'https://epic.uchicago.edu/wp-content/uploads/sites/5/2025/01/1638647506_raghav-chadha.jpg', votes: 85, totalVotes: 100 },
+    { _id: '2', name: 'Sachin Pilot', description: 'Senior Congress leader', imageUrl: 'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2018/12/pilot1-1545029631.jpg', votes: 72, totalVotes: 100 },
+    { _id: '3', name: 'Tejasvi Surya', description: 'BJP MP, President of Bharatiya Janata Yuva Morcha', imageUrl: 'https://pbs.twimg.com/profile_images/1826819616355856384/0UyEk-zl_400x400.jpg', votes: 65, totalVotes: 100 },
+    { _id: '4', name: 'Aaditya Thackeray', description: 'Shiv Sena (UBT) leader, ex-minister in Maharashtra', imageUrl: 'https://images.mid-day.com/images/images/2025/jan/aaditya-thackeray-file_d_d.jpg', votes: 60, totalVotes: 100 },
+    { _id: '5', name: 'Kanhaiya Kumar', description: 'Former JNUSU President, now Congress leader; vocal on youth & student issues.', imageUrl: 'https://static.toiimg.com/thumb/msid-122106578,imgsize-1055161,width-400,resizemode-4/122106578.jpg', votes: 55, totalVotes: 100 },
+    { _id: '6', name: 'Hardik Patel', description: 'Patidar agitation leader, now active in politics; known for youth mobilization', imageUrl: 'https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/04/hardikpatel-1650627109.jpg', votes: 50, totalVotes: 100 },
+    { _id: '7', name: 'Chinmayi Sripada', description: 'Singer & activist; #MeToo voice in India.', imageUrl: '/placeholder.svg', votes: 45, totalVotes: 100 },
+    { _id: '8', name: 'Trisha Shetty', description: 'Gender equality activist, founder of SheSays; Forbes 30 under 30.', imageUrl: 'https://femina.wwmindia.com/content/2021/aug/gendertrishashettybcclinsta-21629219706.jpg', votes: 40, totalVotes: 100 },
+    { _id: '9', name: 'Ridhima Pandey', description: 'Climate activist, dubbed “India’s Greta Thunberg”', imageUrl: 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/201912/IMG20190920124909_-_Copy.jpeg', votes: 35, totalVotes: 100 },
+    { _id: '10', name: 'Sonu Sood', description: 'Actor-turned-humanitarian, became a youth icon for COVID relief work.', imageUrl: 'https://assets.entrepreneur.com/content/3x2/2000/1656656216-Myproject42.jpg', votes: 30, totalVotes: 100 },
   ];
 
   return (
