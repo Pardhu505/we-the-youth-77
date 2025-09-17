@@ -54,7 +54,6 @@ export const Footer = () => {
                   <span>The Hindu</span>
                   <span>TOI</span>
                   <span>NDTV</span>
-                  <span>CNN-IBN</span>
                 </div>
               </div>
               <div className="text-gray-300">
@@ -73,11 +72,11 @@ export const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-gray-300">
                 <Mail size={16} />
-                <span>contact@wetheyouthindia.org</span>
+                <span>wetheyouthinspire@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-300">
                 <Phone size={16} />
-                <span>+91 98765 xxxxx</span>
+                <span>+91 9004101360</span>
               </div>
             </div>
           </div>
