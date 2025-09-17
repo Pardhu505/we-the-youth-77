@@ -52,7 +52,6 @@ export const Footer = () => {
                 <p className="text-sm mb-2">Featured in:</p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <span>The Hindu</span>
-                  <span>TOI</span>
                   <span>NDTV</span>
                 </div>
               </div>
