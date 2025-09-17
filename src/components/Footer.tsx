@@ -51,8 +51,8 @@ export const Footer = () => {
               <div className="text-gray-300">
                 <p className="text-sm mb-2">Featured in:</p>
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <span>The Hindu</span>
-                  <span>NDTV</span>
+                  <span></span>
+                  <span></span>
                 </div>
               </div>
               <div className="text-gray-300">
