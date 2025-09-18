@@ -34,7 +34,7 @@ export const HeroSection = () => {
             The Gap: Youth Population vs Youth Representation
           </h2>
           
-          <Card className="p-8 shadow-card hover:shadow-hover transition-all duration-300 bg-white/40">
+          <Card className="p-8 shadow-card hover:shadow-hover transition-all duration-300 bg-gray/40">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <div className="text-center">
