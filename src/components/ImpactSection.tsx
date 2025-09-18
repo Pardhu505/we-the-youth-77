@@ -107,20 +107,20 @@ export const ImpactSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12 mx-[10px] my-[10px]">
           <Card className="p-6 text-center shadow-card hover:shadow-hover transition-all duration-300">
             <Users className="mx-auto mb-4 text-primary" size={48} />
-            <div className="text-3xl font-bold text-foreground mb-2">50,000+</div>
+            <div className="text-3xl font-bold text-foreground mb-2">10,000+</div>
             <p className="text-muted-foreground">Young People Reached</p>
           </Card>
 
           <Card className="p-6 text-center shadow-card hover:shadow-hover transition-all duration-300">
             <MapPin className="mx-auto mb-4 text-primary" size={48} />
-            <div className="text-3xl font-bold text-foreground mb-2">28</div>
+            <div className="text-3xl font-bold text-foreground mb-2">13</div>
             <p className="text-muted-foreground">States Represented</p>
           </Card>
 
           <Card className="p-6 text-center shadow-card hover:shadow-hover transition-all duration-300">
             <Megaphone className="mx-auto mb-4 text-primary" size={48} />
-            <div className="text-3xl font-bold text-foreground mb-2">15</div>
-            <p className="text-muted-foreground">Campaigns Launched</p>
+            <div className="text-3xl font-bold text-foreground mb-2">5</div>
+            <p className="text-muted-foreground">Campuses Reached</p>
           </Card>
 
           
