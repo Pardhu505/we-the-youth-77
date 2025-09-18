@@ -118,6 +118,7 @@ export const NewsletterSection = () => {
           <p className="text-lg font-playfair text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
             Explore our previous editions covering the most important topics shaping India's youth
           </p>
+          {/*
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { quarter: "Q3 2024", title: "Climate Action & Youth Leadership", date: "Sep 2024" },
@@ -139,6 +140,7 @@ export const NewsletterSection = () => {
               </Card>
             ))}
           </div>
+          */}
         </div>
 
         {/* Contribute Section */}
