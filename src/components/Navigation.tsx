@@ -23,10 +23,7 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <img src="/logo.png" alt="We The Youth Logo" className="h-12 w-12 mr-2 rounded-full" />
-            <h1 className="text-xl font-dm-serif font-bold text-primary">
-              Desh Ke Liye....!
-            </h1>
+            <img src="/logo.png" alt="We The Youth Logo" className="h-14 w-14 rounded-full" />
           </div>
 
           {/* Desktop Menu */}
