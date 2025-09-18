@@ -1,8 +1,7 @@
 import { Card } from "@/components/ui/card";
-import { Users, MapPin, Megaphone } from "lucide-react";
+import { Users, MapPin, Megaphone, Target } from "lucide-react";
 import { IndiaMap } from "@vishalvoid/react-india-map";
 import type { StateData } from "@vishalvoid/react-india-map";
-import { useEffect } from "react";
 
 export const ImpactSection = () => {
   const stateData: StateData[] = [
@@ -43,55 +42,6 @@ export const ImpactSection = () => {
     { id: "IN-LD", customData: { value: 350 } },
     { id: "IN-PY", customData: { value: 360 } },
   ];
-
-  const statesToColor = [
-    "IN-AP",
-    "IN-TG",
-    "IN-AS",
-    "IN-DL",
-    "IN-UP",
-    "IN-RJ",
-    "IN-MH",
-    "IN-ML",
-    "IN-MZ",
-    "IN-HR",
-    "IN-TN",
-    "IN-WB",
-    "IN-BR",
-  ];
-
-  const getRandomColor = () => {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  };
-
-  useEffect(() => {
-    const styleId = "custom-map-styles";
-    let styleElement = document.getElementById(styleId) as HTMLStyleElement;
-
-    if (!styleElement) {
-      styleElement = document.createElement("style");
-      styleElement.id = styleId;
-      document.head.appendChild(styleElement);
-    }
-
-    const cssRules = statesToColor
-      .map((stateId) => `path#${stateId} { fill: ${getRandomColor()}; }`)
-      .join("\n");
-
-    styleElement.innerHTML = cssRules;
-
-    return () => {
-      const styleElementToRemove = document.getElementById(styleId);
-      if (styleElementToRemove) {
-        document.head.removeChild(styleElementToRemove);
-      }
-    };
-  }, []);
 
   return <section id="impact" className="py-20 px-4 bg-primary/5">
       <div className="container mx-auto">
