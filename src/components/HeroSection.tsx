@@ -60,7 +60,7 @@ export const HeroSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-border">
               <div className="text-center">
                 <Users className="mx-auto mb-2 text-primary" size={24} />
-                <div className="text-lg font-bold">30M+</div>
+                <div className="text-lg font-bold">10K+</div>
                 <p className="text-sm text-muted-foreground">Young Indians</p>
               </div>
               <div className="text-center">
@@ -70,7 +70,7 @@ export const HeroSection = () => {
               </div>
               <div className="text-center">
                 <TrendingUp className="mx-auto mb-2 text-primary" size={24} />
-                <div className="text-lg font-bold">15</div>
+                <div className="text-lg font-bold">5</div>
                 <p className="text-sm text-muted-foreground">Campuses </p>
               </div>
             </div>
