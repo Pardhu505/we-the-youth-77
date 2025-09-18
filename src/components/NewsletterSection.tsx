@@ -96,13 +96,13 @@ export const NewsletterSection = () => {
               <div>
                 <div className="flex items-center text-sm text-muted-foreground mb-2">
                   <Calendar className="mr-2" size={16} />
-                  Q4 2024
+                  Q4 202*
                 </div>
                 <h3 className="text-xl font-dm-serif font-bold mb-4">
-                  The Future of Work: What Young India Thinks
+                  News Letter: Launching Soon..!
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  Insights from 10,000+ young Indians on career aspirations, remote work, and the evolving job market.
+                  **********************************************.
                 </p>
                 <Button variant="outline" className="w-full">
                   Read Now <ArrowRight className="ml-2" size={16} />
