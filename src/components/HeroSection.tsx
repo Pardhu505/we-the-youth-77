@@ -34,7 +34,7 @@ export const HeroSection = () => {
             The Gap: Youth Population vs Youth Representation
           </h2>
           
-          <Card className="p-8 shadow-card hover:shadow-hover transition-all duration-300 bg-white/60">
+          <Card className="p-8 shadow-card hover:shadow-hover transition-all duration-300 bg-white/50">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
                 <div className="text-center">
@@ -60,18 +60,18 @@ export const HeroSection = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 pt-8 border-t border-border">
               <div className="text-center">
                 <Users className="mx-auto mb-2 text-primary" size={24} />
-                <div className="text-lg font-bold">600M+</div>
+                <div className="text-lg font-bold">30M+</div>
                 <p className="text-sm text-muted-foreground">Young Indians</p>
               </div>
               <div className="text-center">
                 <MapPin className="mx-auto mb-2 text-primary" size={24} />
-                <div className="text-lg font-bold">28</div>
+                <div className="text-lg font-bold">13</div>
                 <p className="text-sm text-muted-foreground">States Reached</p>
               </div>
               <div className="text-center">
                 <TrendingUp className="mx-auto mb-2 text-primary" size={24} />
                 <div className="text-lg font-bold">15</div>
-                <p className="text-sm text-muted-foreground">Campaigns</p>
+                <p className="text-sm text-muted-foreground">Campuses </p>
               </div>
             </div>
           </Card>
