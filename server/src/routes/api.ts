@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { Types } from 'mongoose';
 import Registration from '../models/Registration';
 import Subscription from '../models/Subscription';
 import PriorityVote from '../models/PriorityVote';
@@ -59,14 +60,23 @@ router.get('/priorities/votes', async (req, res) => {
 
 // @route   POST api/priorities/vote
 // @desc    Vote for a priority
-// @access  Public
+// @access  Registered Users
 router.post('/priorities/vote', async (req, res) => {
-  const { priority } = req.body;
-  if (!priority) {
-    return res.status(400).json({ msg: 'Priority is required' });
+  const { priority, email } = req.body;
+  if (!priority || !email) {
+    return res.status(400).json({ msg: 'Priority and email are required' });
   }
 
   try {
+    const user = await Registration.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: 'User not registered' });
+    }
+
+    if (user.votedPriorities.includes(priority)) {
+      return res.status(400).json({ msg: 'You have already voted for this priority' });
+    }
+
     let priorityVote = await PriorityVote.findOne({ priority });
     if (priorityVote) {
       priorityVote.votes += 1;
@@ -75,6 +85,10 @@ router.post('/priorities/vote', async (req, res) => {
       priorityVote = new PriorityVote({ priority, votes: 1 });
       await priorityVote.save();
     }
+
+    user.votedPriorities.push(priority);
+    await user.save();
+
     res.status(201).json(priorityVote);
   } catch (err: any) {
     console.error(err.message);
@@ -97,15 +111,34 @@ router.get('/leaders', async (req, res) => {
 
 // @route   POST api/leaders/:id/vote
 // @desc    Vote for a leader
-// @access  Public
+// @access  Registered Users
 router.post('/leaders/:id/vote', async (req, res) => {
+  const { email } = req.body;
+  if (!email) {
+    return res.status(400).json({ msg: 'Email is required' });
+  }
+
   try {
-    const leader = await Leader.findById(req.params.id);
+    const user = await Registration.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ msg: 'User not registered' });
+    }
+
+    const leaderId = new Types.ObjectId(req.params.id);
+    if (user.votedLeaders.includes(leaderId)) {
+      return res.status(400).json({ msg: 'You have already voted for this leader' });
+    }
+
+    const leader = await Leader.findById(leaderId);
     if (!leader) {
       return res.status(404).json({ msg: 'Leader not found' });
     }
     leader.votes += 1;
     await leader.save();
+
+    user.votedLeaders.push(leaderId);
+    await user.save();
+
     res.json(leader);
   } catch (err: any) {
     console.error(err.message);
