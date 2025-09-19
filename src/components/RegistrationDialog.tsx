@@ -124,7 +124,9 @@ export function RegistrationDialog({
         title: "Success!",
         description: "You have been registered successfully.",
       });
+      localStorage.setItem("userEmail", values.email);
       form.reset();
+      window.location.reload();
     } catch (error) {
       toast({
         variant: "destructive",

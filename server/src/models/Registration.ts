@@ -29,6 +29,8 @@ const registrationSchema = new Schema({
   desireToContest: String,
   contestedElectionsDetails: String,
   agreeToTerms: { type: Boolean, required: true },
+  votedPriorities: [{ type: String }],
+  votedLeaders: [{ type: Schema.Types.ObjectId, ref: 'Leader' }],
 }, { timestamps: true });
 
 const Registration = model('Registration', registrationSchema);
