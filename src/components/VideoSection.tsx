@@ -7,8 +7,13 @@ export const VideoSection = () => {
         data-testid="video-frame-image"
         className="w-full h-auto"
       />
-     <div className="absolute w-[75%] h-[72%] top-[2.5%] left-[12.3%] bg-white flex items-center justify-center">
-        <p className="text-black text-2xl font-bold">Video coming soon</p>
+      <div className="absolute w-[75%] h-[72%] top-[2.5%] left-[12.3%]">
+        <iframe
+          src="https://drive.google.com/file/d/1SOWSfd-LqIybnrQZ0TLn9C5lNXH9AaN-/preview"
+          width="100%"
+          height="100%"
+          allow="autoplay"
+        ></iframe>
       </div>
     </div>
   );
