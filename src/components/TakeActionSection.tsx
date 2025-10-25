@@ -77,5 +77,6 @@ export const TakeActionSection = ({
           </Card>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
