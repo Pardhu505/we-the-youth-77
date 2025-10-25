@@ -66,8 +66,10 @@ const formSchema = z.object({
 
 export function RegistrationDialog({
   children,
+  onRegistrationSuccess,
 }: {
   children: React.ReactNode;
+  onRegistrationSuccess: (email: string) => void;
 }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -104,17 +106,21 @@ export function RegistrationDialog({
 
   const { toast } = useToast();
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Registration failed");
@@ -125,8 +131,9 @@ export function RegistrationDialog({
         description: "You have been registered successfully.",
       });
       localStorage.setItem("userEmail", values.email);
+      onRegistrationSuccess(values.email);
       form.reset();
-      window.location.reload();
+      setIsOpen(false);
     } catch (error) {
       toast({
         variant: "destructive",
@@ -139,10 +146,8 @@ export function RegistrationDialog({
   }
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[800px] h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Registration Form</DialogTitle>

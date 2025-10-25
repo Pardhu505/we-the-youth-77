@@ -1,10 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { BarChart3, TrendingUp, Users, MapPin } from "lucide-react";
+import { TrendingUp, Users, MapPin } from "lucide-react";
 import { RegistrationDialog } from "./RegistrationDialog";
 import { VideoSection } from "./VideoSection";
 
-export const HeroSection = () => {
+export const HeroSection = ({
+  onRegistrationSuccess,
+}: {
+  onRegistrationSuccess: (email: string) => void;
+}) => {
   return (
     <section
       id="home"
@@ -78,7 +82,7 @@ export const HeroSection = () => {
         </div>
 
         <div className="text-center">
-          <RegistrationDialog>
+          <RegistrationDialog onRegistrationSuccess={onRegistrationSuccess}>
             <Button variant="cta" size="lg" className="text-lg">
               Join Us
             </Button>

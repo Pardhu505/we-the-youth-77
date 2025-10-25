@@ -54,20 +54,14 @@ interface Leader {
   votes: number;
 }
 
-export const NextGenLeadersSection = () => {
+export const NextGenLeadersSection = ({ userEmail }: { userEmail: string | null }) => {
   const { toast } = useToast();
   const [priorities, setPriorities] = useState<Priority[]>([]);
   const [leaders, setLeaders] = useState<Leader[]>([]);
   const [selectedPriority, setSelectedPriority] = useState<string | null>(null);
   const [selectedLeader, setSelectedLeader] = useState<string | null>(null);
-  const [userEmail, setUserEmail] = useState<string | null>(null);
 
   useEffect(() => {
-    const email = localStorage.getItem('userEmail');
-    if (email) {
-      setUserEmail(email);
-    }
-
     const fetchPriorities = async () => {
       try {
         const res = await fetch('/api/priorities/votes');
